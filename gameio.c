@@ -22,7 +22,7 @@ void startup(char field[][LEN]) {
   getchar();
 }
 
-char setColor() {
+char setColor(void) {
   char color;
   color = '0';
   do {
