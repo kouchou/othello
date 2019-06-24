@@ -22,6 +22,17 @@ void startup(char field[][LEN]) {
   getchar();
 }
 
+char setColor() {
+  char color;
+  color = '0';
+  do {
+    printf("set your color (w or b): ");
+    scanf("%c", &color);
+  } while(!(color == 'w' || color == 'b'));
+
+  return (color == 'w') ? WHITE : BLACK;
+}
+
 /* それぞれのコマの数の表示 */
 void viewStatus(F_INFO info) {
   printf("\tCount: Black('X'): %d\t", info.black);

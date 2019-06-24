@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #ifdef _MSC_VER
-  #include <Windows.h>
+#include <Windows.h>
 #endif
 
 #include "main.h"
@@ -16,7 +16,7 @@
 
 int main(int argc, char **argv) {
   char field[LEN][LEN];  // 8x8の文字型2次元配列
-//  int blcnt = 0;    // 空白セル数のカウント
+  //  int blcnt = 0;    // 空白セル数のカウント
   int available;    // パス，終了判定フラグ
   char player;    // 人間のコマ
   F_INFO info;    // 盤面情報（コマ，空白の個数）
@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
   startup(field);
 
   // 人間は白で先手
-  player = HUMAN;
+  player = setColor();
 
   cls();
 
@@ -98,4 +98,5 @@ int main(int argc, char **argv) {
 
   return 0;
 }
+
 
