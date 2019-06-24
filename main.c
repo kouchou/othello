@@ -45,6 +45,8 @@ int main(int argc, char **argv) {
     cls();
     available = 0;
 
+    // プレイヤーが後手で、かつ1つも石が置かれていない（初手）の時はスキップする処理が書きたかった
+    // もう少しスマートなやり方がある気がする・・
     if (info.blank == (LEN * LEN - 4) && player == BLACK) {
       // スキップ
     } else {
