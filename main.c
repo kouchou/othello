@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #ifdef _MSC_VER
-  #include <Windows.h>
+#include <Windows.h>
 #endif
 
 #include "main.h"
@@ -16,7 +16,7 @@
 
 int main(int argc, char **argv) {
   char field[LEN][LEN];  // 8x8の文字型2次元配列
-//  int blcnt = 0;    // 空白セル数のカウント
+  //  int blcnt = 0;    // 空白セル数のカウント
   int available;    // パス，終了判定フラグ
   char player;    // 人間のコマ
   F_INFO info;    // 盤面情報（コマ，空白の個数）
@@ -27,8 +27,8 @@ int main(int argc, char **argv) {
   // スタート画面の表示
   startup(field);
 
-  // 人間は白で先手
-  player = HUMAN;
+  // ユーザに先手後手を選んでもらう
+  player = setColor();
 
   cls();
 
@@ -36,28 +36,37 @@ int main(int argc, char **argv) {
   printf("GAME START!!\n");
   uWait(2);
 
+  // 初期盤面の情報を入れる（初手を判別するため）
+  info = fieldStatus(field);
+
   // ゲームループ
   // availableが0ならループ終了
   do {
     cls();
     available = 0;
 
-    /* 人間の手番 */
-    printf("Your('%c') turn:\n", player);
-    printField(field);
-
-    // availableがもともと0なので、human()の返り値も0なら0、違うならその返り値(-1とか)になる
-    // 最後まで行けば、humanのbetter変数の値が返ってくる
-    available |= human(field, player);
-
-    cls();
-    // C言語にbooleanは無く、0がfalse扱い、それ以外はtrue扱い
-    // つまりココは、availableが0かどうかということ
-    // 0でないなら、コマを打ったあとの盤面を表示、0ならパス
-    if(available) {
+    // プレイヤーが後手で、かつ1つも石が置かれていない（初手）の時はスキップする処理が書きたかった
+    // もう少しスマートなやり方がある気がする・・
+    if (info.blank == (LEN * LEN - 4) && player == BLACK) {
+      // スキップ
+    } else {
+      /* 人間の手番 */
       printf("Your('%c') turn:\n", player);
       printField(field);
-    } else printf("\tYou: Pass!\n");
+
+      // availableがもともと0なので、human()の返り値も0なら0、違うならその返り値(-1とか)になる
+      // 最後まで行けば、humanのbetter変数の値が返ってくる
+      available |= human(field, player);
+
+      cls();
+      // C言語にbooleanは無く、0がfalse扱い、それ以外はtrue扱い
+      // つまりココは、availableが0かどうかということ
+      // 0でないなら、コマを打ったあとの盤面を表示、0ならパス
+      if(available) {
+        printf("Your('%c') turn:\n", player);
+        printField(field);
+      } else printf("\tYou: Pass!\n");
+    }
 
     uWait(1);
 
@@ -98,4 +107,5 @@ int main(int argc, char **argv) {
 
   return 0;
 }
+
 
