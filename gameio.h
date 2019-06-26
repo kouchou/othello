@@ -9,6 +9,7 @@
 
 // プロトタイプ宣言
 void startup(char field[][LEN]);
+int setGameMode(void);
 char setColor(void);
 void printField(char f[LEN][LEN]);
 void uWait(int sec);

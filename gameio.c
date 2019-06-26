@@ -22,6 +22,16 @@ void startup(char field[][LEN]) {
   getchar();
 }
 
+int setGameMode() {
+  int mode = 0;
+  do {
+    printf("select game mode: single play(0) or two player play(1)");
+    scanf("%d", &mode);
+  } while(!(mode == 0 || mode == 1));
+
+  return mode;
+}
+
 char setColor(void) {
   char color;
   color = '0';
