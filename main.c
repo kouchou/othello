@@ -92,7 +92,22 @@ int main(int argc, char **argv) {
     } while(available);
   } else if (gameMode == 1) {
     // 二人プレイのとき
-    printf("二人プレイです");
+    do {
+      cls();
+      available = 0;
+
+      printf("Your('%c') turn:\n", player);
+      printField(field);
+
+      available |= human(field, player);
+
+      if(available) {
+        printf("Your('%c') turn:\n", player);
+        printField(field);
+      } else printf("\tYou: Pass!\n");
+
+      player = (player == WHITE) ? BLACK : WHITE;
+    } while (available != 0);
   }
 
 
