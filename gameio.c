@@ -16,8 +16,6 @@ void startup(char field[][LEN]) {
   printf("Welcome to Othello Game!!\n\n");
   printField(field);
 
-  printf("You are WHITE('O') piece.\n\n");
-
   printf("Please some key press. Game will start.\n");
   getchar();
 }
@@ -25,7 +23,7 @@ void startup(char field[][LEN]) {
 int setGameMode() {
   int mode = 0;
   do {
-    printf("select game mode: single play(0) or two player play(1): ");
+    printf("[select game mode]\n single play(0) or two player play(1): ");
     scanf("%d", &mode);
   } while(!(mode == 0 || mode == 1));
 
