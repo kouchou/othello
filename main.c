@@ -132,7 +132,7 @@ int main(int argc, char **argv) {
   }
 
   printf("Please some key press and enter. Game will end.\n");
-  scanf(%c, &player);
+  scanf("%c", &player);
 
   return 0;
 }
