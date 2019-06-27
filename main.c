@@ -131,8 +131,8 @@ int main(int argc, char **argv) {
     printf("WHITE WIN!!  BLACK FAILED\n");
   }
 
-  printf("Please some key press. Game will end.\n");
-  getchar();
+  printf("Please some key press and enter. Game will end.\n");
+  scanf(%c, &player);
 
   return 0;
 }
