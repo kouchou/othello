@@ -101,6 +101,7 @@ int main(int argc, char **argv) {
 
       available |= human(field, player);
 
+      cls();
       if(available) {
         printf("Your('%c') turn:\n", player);
         printField(field);
