@@ -10,6 +10,7 @@
 #endif
 
 #include <stdio.h>
+#include <unistd.h>
 
 /* 起動時の画面表示 */
 void startup(char field[][LEN]) {
@@ -53,7 +54,7 @@ void uWait(int sec) {
 #ifdef _MSC_VER
   Sleep(sec * 1000);
 #else
-  //sleep(sec);
+  sleep(sec);
 #endif
 }
 
