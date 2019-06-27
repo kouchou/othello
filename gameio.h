@@ -6,6 +6,7 @@
 #define GAMEIO_H
 
 #include <stdio.h>
+#include "main.h"
 
 // プロトタイプ宣言
 void startup(char field[][LEN]);

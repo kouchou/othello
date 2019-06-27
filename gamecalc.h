@@ -6,6 +6,7 @@
 #define GAMECALC_H
 
 #include <stdio.h>
+#include "main.h"
 
 // プロトタイプ宣言
 
