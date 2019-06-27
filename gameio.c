@@ -16,10 +16,18 @@ void startup(char field[][LEN]) {
   printf("Welcome to Othello Game!!\n\n");
   printField(field);
 
-  printf("You are WHITE('O') piece.\n\n");
-
   printf("Please some key press. Game will start.\n");
   getchar();
+}
+
+int setGameMode() {
+  int mode = 0;
+  do {
+    printf("[select game mode]\n single play(0) or two player play(1): ");
+    scanf("%d", &mode);
+  } while(!(mode == 0 || mode == 1));
+
+  return mode;
 }
 
 char setColor(void) {
@@ -56,7 +64,7 @@ void cls() {
   system("cls");
 #else
   // エスケープシーケンスの"ESC[2J"は画面クリア
-  printf("\n\x1b[2J\n");
+  //printf("\n\x1b[2J\n");
 #endif
 }
 
